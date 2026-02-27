@@ -5,13 +5,13 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;600;700&display=swap');
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: 'Source Sans 3', sans-serif; font-size: 10.5pt; line-height: 1.45; color: #1a1a1a; padding: 0.5in 0.6in; max-width: 8.5in; }
-a { color: #1a1a1a; text-decoration: none; }
+body { font-family: 'Source Sans 3', sans-serif; font-size: 10.5pt; line-height: 1.45; color: #1a1a1a; padding: 0.4in 0.55in; width: 8.5in; }
+a { color: #0055aa; text-decoration: none; }
 h1 { font-size: 22pt; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 4px; }
-.contact { font-size: 9.5pt; color: #444; margin-bottom: 16px; }
-.contact a { color: #0066cc; }
+.contact { font-size: 9.5pt; color: #444; margin-bottom: 14px; }
+.contact a { color: #0055aa; }
 .contact span { margin: 0 4px; color: #999; }
-h2 { font-size: 11pt; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: #1a1a1a; border-bottom: 1.5px solid #1a1a1a; padding-bottom: 3px; margin: 14px 0 8px; }
+h2 { font-size: 11pt; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: #1a1a1a; border-bottom: 1.5px solid #1a1a1a; padding-bottom: 3px; margin: 12px 0 8px; }
 h3 { font-size: 10.5pt; font-weight: 600; margin-bottom: 1px; }
 .job-header { display: flex; justify-content: space-between; align-items: baseline; }
 .job-header .right { font-size: 9.5pt; color: #555; text-align: right; white-space: nowrap; }
@@ -20,9 +20,10 @@ h3 { font-size: 10.5pt; font-weight: 600; margin-bottom: 1px; }
 ul { margin: 3px 0 10px 18px; }
 li { margin-bottom: 2px; font-size: 10pt; }
 .summary { font-size: 10pt; color: #333; margin-bottom: 4px; line-height: 1.5; }
-.skills-grid { display: grid; grid-template-columns: 120px 1fr; gap: 2px 12px; font-size: 10pt; margin-bottom: 2px; }
-.skills-grid .label { font-weight: 600; color: #333; }
-.skills-grid .value { color: #444; }
+.skills-list { list-style: none; margin: 0; padding: 0; }
+.skills-list li { margin-bottom: 3px; font-size: 10pt; padding-left: 0; }
+.skills-list li::before { content: none; }
+.skills-list .label { font-weight: 700; }
 .projects { font-size: 9.5pt; color: #333; }
 .projects p { margin-bottom: 4px; }
 .projects strong { font-weight: 600; }
@@ -31,23 +32,23 @@ li { margin-bottom: 2px; font-size: 10pt; }
 <body>
 <h1>MUHAMMET YILDIZ</h1>
 <div class="contact">
-Austin, TX <span>|</span> (617) 906-1307 <span>|</span> <a href="mailto:yldzmuhammed@gmail.com">yldzmuhammed@gmail.com</a> <span>|</span> <a href="https://github.com/yldzmuhammed">github.com/yldzmuhammed</a> <span>|</span> <a href="https://linkedin.com/in/yldzmuhammed">linkedin.com/in/yldzmuhammed</a> <span>|</span> <a href="https://yldzmuhammed.com">yldzmuhammed.com</a>
+Austin, TX <span>|</span> (617) 906-1307 <span>|</span> <a href="mailto:yldzmuhammed@gmail.com">e-Mail</a> <span>|</span> <a href="https://github.com/yldzmuhammed">GitHub</a> <span>|</span> <a href="https://linkedin.com/in/yldzmuhammed">LinkedIn</a> <span>|</span> <a href="https://yldzmuhammed.com">yldzmuhammed.com</a>
 </div>
 
 <h2>Summary</h2>
-<p class="summary">Principal Embedded Systems Engineer with 15+ years designing production hardware and firmware for IoT, industrial, robotics, and medical devices. Full-stack embedded — PCB design (Altium), firmware (C/C++, FreeRTOS), image processing (NVIDIA Jetson), and cloud integration (AWS). Proven technical leader managing cross-functional teams. U.S. work authorized, no sponsorship required.</p>
+<p class="summary">Embedded systems engineer with 15+ years designing and shipping production hardware and firmware for IoT, industrial, robotics, and medical devices. PCB design through firmware through cloud — Altium, C/C++, FreeRTOS, NVIDIA Jetson, AWS. Led cross-functional teams across firmware, hardware, and software. U.S. work authorized, no sponsorship required.</p>
 
 <h2>Skills</h2>
-<div class="skills-grid">
-<span class="label">Languages</span><span class="value">C, C++, Python, C#, SQL</span>
-<span class="label">MCU Platforms</span><span class="value">STM32 (F4/F7/WL/L0), nRF52, PIC18F, NVIDIA Jetson, Raspberry Pi</span>
-<span class="label">RTOS</span><span class="value">FreeRTOS, ThreadX (USBX, NetX, GUIX)</span>
-<span class="label">Protocols</span><span class="value">LoRaWAN, BLE, LTE/Cat-M1/NB-IoT, Modbus RTU, IO-Link, CAN, RS485, MQTT, CoAP</span>
-<span class="label">Hardware</span><span class="value">Altium Designer (up to 6-layer PCB), SolidWorks, RF layout</span>
-<span class="label">Vision & AI</span><span class="value">LiDAR, image processing, Apple ARKit, C2PA, TouchGFX</span>
-<span class="label">Tools & Cloud</span><span class="value">JTAG, SWD, Logic Analyzer, Git, Jira, AWS (Lambda, IoT)</span>
-<span class="label">Software</span><span class="value">Qt (C++), .NET (C#), Linux application development</span>
-</div>
+<ul class="skills-list">
+<li><span class="label">Languages:</span> C, C++, Python, C#, JavaScript, SQL</li>
+<li><span class="label">MCU / SoC:</span> STM32 (F0, F1, F4, F7, L0, L1, L4, G0, G4, H4, WL, WB), nRF52, nRF54, PIC18F, i.MX, NVIDIA Jetson Nano, Raspberry Pi</li>
+<li><span class="label">RTOS:</span> FreeRTOS, Zephyr</li>
+<li><span class="label">Protocols:</span> LoRaWAN, BLE (4.2, 5.x, 6.x), LTE / Cat-M1 / NB-IoT, MODBUS (RTU, ASCII, TCP), IO-Link, CANOpen, RS485, MQTT, CoAP</li>
+<li><span class="label">Hardware Design:</span> Altium Designer, multi-layer high-speed PCB, SolidWorks, RF layout</li>
+<li><span class="label">Computer Vision:</span> LiDAR point cloud processing, real-time video pipeline optimization, image-based distance measurement, AR (Apple ARKit / Swift), C2PA content authenticity</li>
+<li><span class="label">Frameworks & Software:</span> Node.js, React, Qt (C++), Swift, .NET (C#), TouchGFX, Linux systems programming</li>
+<li><span class="label">Tools:</span> JTAG, SWD, Logic Analyzer, Oscilloscope, Spectrum Analyzer, Git, Jira, AWS (Lambda, IoT Core)</li>
+</ul>
 
 <h2>Experience</h2>
 
@@ -56,18 +57,17 @@ Austin, TX <span>|</span> (617) 906-1307 <span>|</span> <a href="mailto:yldzmuha
 <ul>
 <li>Designing custom modem and communication protocol for railcar preventive maintenance sensor network</li>
 <li>Developing LoRaWAN sensor firmware for train health monitoring on STM32WL + FreeRTOS</li>
-<li>Leading PCB redesign of sensor family to improve RF performance and reduce power consumption</li>
+<li>Redesigning sensor PCBs to improve RF performance and reduce power consumption</li>
 <li>Optimizing LTE modem communication stack for UDP/MQTT telemetry in rail environments</li>
 </ul>
 
 <div class="job-header"><h3>Guinn Partners</h3><span class="right">Austin, TX</span></div>
 <div class="job-header"><span class="job-title">Software Team Lead</span><span class="job-date">Aug 2024 – Jul 2025</span></div>
 <ul>
-<li>Led cross-functional team delivering embedded, image processing, and mobile/web applications</li>
-<li>Implemented C2PA image signing and verification pipeline on NVIDIA Jetson platforms</li>
-<li>Built real-time image processing systems for LiDAR, drones, and autonomous robots using Linux/C++</li>
-<li>Developed Apple AR application for distance measurement using image processing</li>
-<li>Engineered network bandwidth reduction system for security camera infrastructure</li>
+<li>Implemented C2PA image signing and verification pipeline on i.MX platform</li>
+<li>Built LiDAR and real-time image processing systems on NVIDIA Jetson Nano for autonomous robots and drones</li>
+<li>Engineered network bandwidth reduction for security camera infrastructure on NVIDIA Jetson Nano</li>
+<li>Developed Apple AR application (Swift / ARKit) for image-based distance measurement</li>
 <li>Led Lift Foils mobile app and web backend development teams</li>
 </ul>
 
@@ -82,14 +82,14 @@ Austin, TX <span>|</span> (617) 906-1307 <span>|</span> <a href="mailto:yldzmuha
 <div class="job-header"><h3>Fenac Encoder</h3><span class="right">Istanbul, Turkey</span></div>
 <div class="job-header"><span class="job-title">Senior Embedded Software Engineering Team Leader</span><span class="job-date">Sep 2021 – Oct 2022</span></div>
 <ul>
-<li>Designed IO-Link encoder and industrial laser distance sensor PCBs (Altium) with embedded firmware in C</li>
-<li>Built Qt-based (C++) PC tools for device configuration, cutting manufacturing line workload by 28%</li>
+<li>Designed IO-Link encoder and industrial laser distance sensor PCBs (Altium) with firmware in C</li>
+<li>Built Qt (C++) configuration tools, cutting manufacturing line workload by 28%</li>
 </ul>
 
 <div class="job-header"><h3>Epsilon Elektronik</h3><span class="right">Istanbul, Turkey</span></div>
 <div class="job-header"><span class="job-title">Senior Embedded Systems Engineer</span><span class="job-date">Aug 2020 – Sep 2021</span></div>
 <ul>
-<li>Developed firmware for Radia Synthesizer (FreeRTOS, C) — controls 20+ stepper motors and radioactivity sensors</li>
+<li>Developed firmware for Radia Synthesizer (FreeRTOS, C) controlling 20+ stepper motors and radioactivity sensors</li>
 <li>Built companion C# .NET application for device control, prescription tracking, and reporting</li>
 <li>Improved Radiation Area Monitor firmware accuracy, reducing field failures by 12%</li>
 </ul>
@@ -97,20 +97,20 @@ Austin, TX <span>|</span> (617) 906-1307 <span>|</span> <a href="mailto:yldzmuha
 <div class="job-header"><h3>Yasam Electronic Water Meter</h3><span class="right">Istanbul, Turkey</span></div>
 <div class="job-header"><span class="job-title">Senior Embedded Systems Engineer</span><span class="job-date">Sep 2016 – Jul 2020</span></div>
 <ul>
-<li>Implemented LoRaWAN v1.1 library for smart meters and smart city sensor nodes (ARM Cortex-M0+/M4, FreeRTOS)</li>
-<li>Designed and deployed LoRaWAN gateway (SX1301/SX1308) and network server (C, Python, Linux)</li>
+<li>Implemented LoRaWAN v1.1 stack for smart meters and smart city sensor nodes (Cortex-M0+ / M4, FreeRTOS)</li>
+<li>Designed and deployed LoRaWAN gateway (SX1301 / SX1308) and network server (C, Python, Linux)</li>
 </ul>
 
 <div class="job-header"><h3>Kodar Information Tech</h3><span class="right">Istanbul, Turkey</span></div>
 <div class="job-header"><span class="job-title">Senior Embedded Systems Engineer (Consultant)</span><span class="job-date">Mar 2016 – Sep 2016</span></div>
 <ul>
-<li>Designed RF PCB and firmware for BLE-based Real-Time Location System (nRF52)</li>
+<li>Designed RF PCB and BLE firmware for indoor Real-Time Location System on nRF52</li>
 </ul>
 
 <div class="job-header"><h3>Tum Elektronik</h3><span class="right">Istanbul, Turkey</span></div>
 <div class="job-header"><span class="job-title">Embedded Systems Engineer</span><span class="job-date">Jul 2012 – Oct 2015</span></div>
 <ul>
-<li>R&D device testing and validation through mass production approval</li>
+<li>R&D device testing and validation through mass production sign-off</li>
 </ul>
 
 <h2>Education</h2>
@@ -119,13 +119,13 @@ Austin, TX <span>|</span> (617) 906-1307 <span>|</span> <a href="mailto:yldzmuha
 
 <h2>Select Projects</h2>
 <div class="projects">
-<p><strong>Thermal Camera Access Control</strong> — Face temperature + mask detection, multi-protocol (BLE/Wi-Fi/CAN/RS485), TouchGFX, FreeRTOS</p>
-<p><strong>Mobile Payment Terminal</strong> — Custom POS on STM32F7: RFID, GSM, TouchGFX GUI, 6-layer high-speed PCB</p>
-<p><strong>Ultra-Low Power Water Meter</strong> — LoRaWAN v1.1 volumetric/ultrasonic meter with custom glass LCD, battery-powered</p>
-<p><strong>Smart Watch</strong> — nRF52 + DA1470x, environmental sensors, TFT LCD (hobby project, open source on GitHub)</p>
-<p><strong>Industrial HMI</strong> — ThreadX-based (USBX/NetX/GUIX) production line controller</p>
+<p><strong>Thermal Camera Access Control</strong> — Face temperature + mask detection, multi-protocol (BLE / Wi-Fi / CANOpen / RS485), TouchGFX, FreeRTOS</p>
+<p><strong>Mobile Payment Terminal</strong> — Custom POS on STM32F7: RFID, GSM, TouchGFX GUI, multi-layer high-speed PCB</p>
+<p><strong>Ultra-Low Power Water Meter</strong> — LoRaWAN v1.1 volumetric / ultrasonic meter with custom glass LCD, battery-powered</p>
+<p><strong>Smart Watch</strong> — nRF52 + DA1470x, environmental sensors, TFT LCD (open source on GitHub)</p>
+<p><strong>Industrial HMI</strong> — Zephyr-class RTOS production line controller with USB and Ethernet</p>
 <p><strong>ULP Sensor Nodes</strong> — Multi-protocol (Sub-1GHz, LoRaWAN, GSM, Wi-Fi, NB-IoT, BLE) environmental monitoring</p>
-<p><strong>LoRaWAN Gateway</strong> — Custom gateway (SX1301/SX1308) with Raspberry Pi and STM32F4</p>
+<p><strong>LoRaWAN Gateway</strong> — Custom gateway (SX1301 / SX1308) with Raspberry Pi and STM32F4</p>
 </div>
 </body>
 </html>
