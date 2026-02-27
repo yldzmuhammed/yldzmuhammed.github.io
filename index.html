@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muhammet Yildiz — Embedded Systems Engineer</title>
+    <meta name="description" content="Principal Embedded Systems Engineer with 15+ years designing production hardware and firmware for IoT, industrial, robotics, and medical devices.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0a0a0f;
+            --bg-card: #12121a;
+            --bg-card-hover: #1a1a28;
+            --text: #e8e8f0;
+            --text-dim: #8888a0;
+            --text-muted: #555568;
+            --accent: #00ff88;
+            --accent-dim: #00cc6a;
+            --accent-glow: rgba(0, 255, 136, 0.15);
+            --accent-secondary: #0088ff;
+            --border: #1e1e30;
+            --mono: 'JetBrains Mono', monospace;
+            --sans: 'Outfit', sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html {
+            scroll-behavior: smooth;
+            scrollbar-width: thin;
+            scrollbar-color: var(--accent-dim) var(--bg);
+        }
+
+        body {
+            font-family: var(--sans);
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        ::selection {
+            background: var(--accent);
+            color: var(--bg);
+        }
+
+        /* ─── Grid Background ─── */
+        .grid-bg {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            background-image:
+                linear-gradient(var(--border) 1px, transparent 1px),
+                linear-gradient(90deg, var(--border) 1px, transparent 1px);
+            background-size: 60px 60px;
+            opacity: 0.3;
+            pointer-events: none;
+        }
+
+        .grid-bg::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 80% 50% at 50% 0%, var(--accent-glow), transparent);
+        }
+
+        /* ─── Navigation ─── */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(10, 10, 15, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-logo {
+            font-family: var(--mono);
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--accent);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-logo span { color: var(--text-dim); }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover { color: var(--accent); }
+
+        /* ─── Sections ─── */
+        section {
+            position: relative;
+            z-index: 1;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-label {
+            font-family: var(--mono);
+            font-size: 0.75rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .section-label::before {
+            content: '';
+            width: 2rem;
+            height: 1px;
+            background: var(--accent);
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+            margin-bottom: 2.5rem;
+        }
+
+        /* ─── Hero ─── */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-top: 5rem;
+        }
+
+        .hero-tag {
+            font-family: var(--mono);
+            font-size: 0.8rem;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .hero-tag .blink {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: var(--accent);
+            border-radius: 50%;
+            animation: blink 2s infinite;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0.3; }
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 7vw, 5.5rem);
+            font-weight: 800;
+            line-height: 1.05;
+            letter-spacing: -3px;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 .accent { color: var(--accent); }
+
+        .hero-sub {
+            font-size: 1.25rem;
+            color: var(--text-dim);
+            max-width: 600px;
+            line-height: 1.7;
+            font-weight: 300;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 3rem;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .stat-num {
+            font-family: var(--mono);
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2.5rem;
+        }
+
+        .hero-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            font-family: var(--mono);
+            font-size: 0.8rem;
+            text-decoration: none;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            color: var(--text-dim);
+            transition: all 0.3s;
+        }
+
+        .hero-links a:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            background: var(--accent-glow);
+        }
+
+        .hero-links a.primary {
+            background: var(--accent);
+            color: var(--bg);
+            border-color: var(--accent);
+            font-weight: 600;
+        }
+
+        .hero-links a.primary:hover {
+            background: var(--accent-dim);
+            transform: translateY(-1px);
+        }
+
+        /* ─── Skills / Tech ─── */
+        .skills-section { padding: 6rem 2rem; }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1px;
+            background: var(--border);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .tech-card {
+            background: var(--bg-card);
+            padding: 2rem;
+            transition: background 0.3s;
+        }
+
+        .tech-card:hover { background: var(--bg-card-hover); }
+
+        .tech-card h3 {
+            font-family: var(--mono);
+            font-size: 0.7rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tech-tags span {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            padding: 0.3rem 0.75rem;
+            border: 1px solid var(--border);
+            border-radius: 3px;
+            transition: all 0.3s;
+        }
+
+        .tech-tags span:hover {
+            border-color: var(--accent);
+            color: var(--text);
+        }
+
+        /* ─── Experience Timeline ─── */
+        .exp-section { padding: 6rem 2rem; }
+
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: linear-gradient(to bottom, var(--accent), var(--border) 70%, transparent);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+            padding-left: 2rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2.35rem;
+            top: 0.5rem;
+            width: 9px;
+            height: 9px;
+            background: var(--accent);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--accent-glow);
+        }
+
+        .timeline-item.past::before {
+            background: var(--text-muted);
+            box-shadow: none;
+        }
+
+        .timeline-date {
+            font-family: var(--mono);
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-bottom: 0.25rem;
+        }
+
+        .timeline-role {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.15rem;
+        }
+
+        .timeline-company {
+            font-size: 0.9rem;
+            color: var(--accent-dim);
+            margin-bottom: 0.75rem;
+        }
+
+        .timeline-bullets {
+            list-style: none;
+        }
+
+        .timeline-bullets li {
+            position: relative;
+            padding-left: 1.25rem;
+            font-size: 0.9rem;
+            color: var(--text-dim);
+            line-height: 1.7;
+            margin-bottom: 0.25rem;
+        }
+
+        .timeline-bullets li::before {
+            content: '›';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .highlight {
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        /* ─── Projects ─── */
+        .projects-section { padding: 6rem 2rem; }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 2rem;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-secondary));
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .project-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .project-card:hover::before { opacity: 1; }
+
+        .project-card h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .project-card p {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+        }
+
+        .project-tech span {
+            font-family: var(--mono);
+            font-size: 0.65rem;
+            color: var(--accent);
+            padding: 0.2rem 0.5rem;
+            border: 1px solid rgba(0, 255, 136, 0.2);
+            border-radius: 3px;
+        }
+
+        /* ─── Contact ─── */
+        .contact-section {
+            padding: 6rem 2rem 8rem;
+            text-align: center;
+        }
+
+        .contact-section h2 {
+            margin-bottom: 1rem;
+        }
+
+        .contact-section p {
+            color: var(--text-dim);
+            max-width: 500px;
+            margin: 0 auto 2.5rem;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.85rem 1.75rem;
+            font-family: var(--mono);
+            font-size: 0.8rem;
+            text-decoration: none;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            color: var(--text-dim);
+            transition: all 0.3s;
+        }
+
+        .contact-links a:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            background: var(--accent-glow);
+        }
+
+        /* ─── Footer ─── */
+        footer {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid var(--border);
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-family: var(--mono);
+        }
+
+        /* ─── Scroll Animations ─── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ─── Responsive ─── */
+        @media (max-width: 768px) {
+            nav { padding: 1rem; }
+            .nav-links { gap: 1rem; }
+            .nav-links a { font-size: 0.75rem; }
+            .hero h1 { letter-spacing: -1.5px; }
+            .hero-stats { gap: 1.5rem; flex-wrap: wrap; }
+            .hero-links { flex-wrap: wrap; }
+            h2 { font-size: 2rem; }
+            .projects-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 480px) {
+            .nav-links { display: none; }
+            section { padding: 0 1rem; }
+            .skills-section, .exp-section, .projects-section, .contact-section { padding: 4rem 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-bg"></div>
+
+    <nav>
+        <a href="#" class="nav-logo">moe<span>.dev</span></a>
+        <ul class="nav-links">
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-tag"><span class="blink"></span> Available for opportunities</div>
+        <h1>Muhammet<br><span class="accent">Yildiz</span></h1>
+        <p class="hero-sub">Principal Embedded Systems Engineer. 15+ years building production hardware & firmware — from PCB design through RTOS firmware to cloud integration. Currently designing rail IoT systems in Austin, TX.</p>
+        <div class="hero-stats">
+            <div>
+                <div class="stat-num">15+</div>
+                <div class="stat-label">Years Experience</div>
+            </div>
+            <div>
+                <div class="stat-num">30+</div>
+                <div class="stat-label">Products Shipped</div>
+            </div>
+            <div>
+                <div class="stat-num">8</div>
+                <div class="stat-label">Companies</div>
+            </div>
+            <div>
+                <div class="stat-num">Full Stack</div>
+                <div class="stat-label">HW → FW → Cloud</div>
+            </div>
+        </div>
+        <div class="hero-links">
+            <a href="mailto:yldzmuhammed@gmail.com" class="primary">Get in Touch</a>
+            <a href="https://github.com/yldzmuhammed">GitHub</a>
+            <a href="https://linkedin.com/in/yldzmuhammed">LinkedIn</a>
+        </div>
+    </section>
+
+    <section class="skills-section" id="skills">
+        <div class="reveal">
+            <div class="section-label">Technical Stack</div>
+            <h2>What I Work With</h2>
+        </div>
+        <div class="tech-grid reveal">
+            <div class="tech-card">
+                <h3>Languages</h3>
+                <div class="tech-tags">
+                    <span>C</span><span>C++</span><span>Python</span><span>C#</span><span>SQL</span>
+                </div>
+            </div>
+            <div class="tech-card">
+                <h3>MCU Platforms</h3>
+                <div class="tech-tags">
+                    <span>STM32</span><span>nRF52</span><span>PIC18F</span><span>NVIDIA Jetson</span><span>Raspberry Pi</span>
+                </div>
+            </div>
+            <div class="tech-card">
+                <h3>RTOS</h3>
+                <div class="tech-tags">
+                    <span>FreeRTOS</span><span>ThreadX</span><span>USBX</span><span>NetX</span><span>GUIX</span>
+                </div>
+            </div>
+            <div class="tech-card">
+                <h3>Protocols</h3>
+                <div class="tech-tags">
+                    <span>LoRaWAN</span><span>BLE</span><span>LTE/Cat-M1</span><span>NB-IoT</span><span>Modbus</span><span>IO-Link</span><span>CAN</span><span>MQTT</span><span>CoAP</span>
+                </div>
+            </div>
+            <div class="tech-card">
+                <h3>Hardware Design</h3>
+                <div class="tech-tags">
+                    <span>Altium Designer</span><span>6-Layer PCB</span><span>RF Layout</span><span>SolidWorks</span>
+                </div>
+            </div>
+            <div class="tech-card">
+                <h3>Vision & AI</h3>
+                <div class="tech-tags">
+                    <span>LiDAR</span><span>Image Processing</span><span>Apple ARKit</span><span>C2PA</span><span>TouchGFX</span>
+                </div>
+            </div>
+            <div class="tech-card">
+                <h3>Tools & Cloud</h3>
+                <div class="tech-tags">
+                    <span>JTAG</span><span>SWD</span><span>Logic Analyzer</span><span>Git</span><span>Jira</span><span>AWS</span>
+                </div>
+            </div>
+            <div class="tech-card">
+                <h3>Software</h3>
+                <div class="tech-tags">
+                    <span>Qt (C++)</span><span>.NET (C#)</span><span>Linux</span><span>TouchGFX</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="exp-section" id="experience">
+        <div class="reveal">
+            <div class="section-label">Career</div>
+            <h2>Experience</h2>
+        </div>
+        <div class="timeline reveal">
+            <div class="timeline-item">
+                <div class="timeline-date">Jul 2025 — Present</div>
+                <div class="timeline-role">Principal Embedded Systems Engineer</div>
+                <div class="timeline-company">Hum Industrial · Austin, TX</div>
+                <ul class="timeline-bullets">
+                    <li>Designing <span class="highlight">custom modem and communication protocol</span> for railcar preventive maintenance sensor network</li>
+                    <li>Developing LoRaWAN sensor firmware on <span class="highlight">STM32WL + FreeRTOS</span> for train health monitoring</li>
+                    <li>Leading PCB redesign to improve RF performance and reduce power consumption</li>
+                    <li>Optimizing LTE modem stack for UDP/MQTT telemetry in rail environments</li>
+                </ul>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">Aug 2024 — Jul 2025</div>
+                <div class="timeline-role">Software Team Lead</div>
+                <div class="timeline-company">Guinn Partners · Austin, TX</div>
+                <ul class="timeline-bullets">
+                    <li>Led team delivering embedded, image processing, and mobile/web applications</li>
+                    <li>Implemented <span class="highlight">C2PA</span> image signing/verification on <span class="highlight">NVIDIA Jetson</span></li>
+                    <li>Built real-time processing systems for <span class="highlight">LiDAR, drones, and autonomous robots</span></li>
+                    <li>Developed Apple AR app for distance measurement via image processing</li>
+                    <li>Led <span class="highlight">Lift Foils</span> mobile app and web backend teams</li>
+                </ul>
+            </div>
+            <div class="timeline-item past">
+                <div class="timeline-date">Oct 2022 — Dec 2023</div>
+                <div class="timeline-role">Senior Embedded Systems Engineer</div>
+                <div class="timeline-company">Amplified Industries · Somerville, MA</div>
+                <ul class="timeline-bullets">
+                    <li>Redesigned PCBs in Altium — <span class="highlight">reduced field failures by 15%</span></li>
+                    <li>Refactored firmware — <span class="highlight">improved battery life by 23%</span></li>
+                    <li>Built BLE-to-Cat-M1 camera gateway on nRF52840 for remote oil well monitoring</li>
+                </ul>
+            </div>
+            <div class="timeline-item past">
+                <div class="timeline-date">Sep 2021 — Oct 2022</div>
+                <div class="timeline-role">Senior Embedded Software Engineering Team Leader</div>
+                <div class="timeline-company">Fenac Encoder · Istanbul, Turkey</div>
+                <ul class="timeline-bullets">
+                    <li>Designed IO-Link encoder and laser distance sensor PCBs with firmware in C</li>
+                    <li>Built Qt-based config tools — <span class="highlight">cut manufacturing workload by 28%</span></li>
+                </ul>
+            </div>
+            <div class="timeline-item past">
+                <div class="timeline-date">Aug 2020 — Sep 2021</div>
+                <div class="timeline-role">Senior Embedded Systems Engineer</div>
+                <div class="timeline-company">Epsilon Elektronik · Istanbul, Turkey</div>
+                <ul class="timeline-bullets">
+                    <li>Firmware for Radia Synthesizer — controls 20+ stepper motors, radioactivity sensors</li>
+                    <li>Radiation Survey Meter with TouchGFX GUI; <span class="highlight">reduced field failures by 12%</span></li>
+                </ul>
+            </div>
+            <div class="timeline-item past">
+                <div class="timeline-date">Sep 2016 — Jul 2020</div>
+                <div class="timeline-role">Senior Embedded Systems Engineer</div>
+                <div class="timeline-company">Yasam Electronic Water Meter · Istanbul, Turkey</div>
+                <ul class="timeline-bullets">
+                    <li>Implemented <span class="highlight">LoRaWAN v1.1</span> library for smart meters and smart city devices</li>
+                    <li>Designed and deployed LoRaWAN gateway and network server</li>
+                </ul>
+            </div>
+            <div class="timeline-item past">
+                <div class="timeline-date">2012 — 2016</div>
+                <div class="timeline-role">Senior Embedded Systems Engineer</div>
+                <div class="timeline-company">Kodar Info Tech & Tum Elektronik · Istanbul, Turkey</div>
+                <ul class="timeline-bullets">
+                    <li>BLE-based RTLS system design (RF PCB + firmware, nRF52)</li>
+                    <li>R&D through mass production validation</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="projects-section" id="projects">
+        <div class="reveal">
+            <div class="section-label">Portfolio</div>
+            <h2>Select Projects</h2>
+        </div>
+        <div class="projects-grid reveal">
+            <div class="project-card">
+                <h3>🔥 Thermal Camera Access Control</h3>
+                <p>COVID-era building access system: face temperature measurement + mask detection via image processing. Multi-protocol comms.</p>
+                <div class="project-tech">
+                    <span>C++</span><span>TouchGFX</span><span>FreeRTOS</span><span>BLE</span><span>Wi-Fi</span><span>CAN</span>
+                </div>
+            </div>
+            <div class="project-card">
+                <h3>💳 Mobile Payment Terminal</h3>
+                <p>Custom POS device with RFID, GSM connectivity, and TouchGFX GUI. 6-layer high-speed PCB with SDRAM and RGB LCD buses.</p>
+                <div class="project-tech">
+                    <span>STM32F7</span><span>C++</span><span>TouchGFX</span><span>FreeRTOS</span><span>6-Layer PCB</span>
+                </div>
+            </div>
+            <div class="project-card">
+                <h3>💧 Ultra-Low Power Water Meter</h3>
+                <p>LoRaWAN v1.1 volumetric and ultrasonic meter with custom glass LCD display, battery-powered for years of operation.</p>
+                <div class="project-tech">
+                    <span>C</span><span>LoRaWAN</span><span>FreeRTOS</span><span>Altium</span><span>STM32L0</span>
+                </div>
+            </div>
+            <div class="project-card">
+                <h3>⌚ Smart Watch</h3>
+                <p>Hobby project: full custom smartwatch with environmental sensors and TFT display on nRF52 and DA1470x platforms.</p>
+                <div class="project-tech">
+                    <span>nRF52</span><span>DA1470x</span><span>C/C++</span><span>Altium</span>
+                </div>
+            </div>
+            <div class="project-card">
+                <h3>🏭 Industrial HMI</h3>
+                <p>Production line controller running ThreadX with USB file access and Ethernet device control.</p>
+                <div class="project-tech">
+                    <span>ThreadX</span><span>USBX</span><span>NetX</span><span>GUIX</span>
+                </div>
+            </div>
+            <div class="project-card">
+                <h3>📡 LoRaWAN Gateway</h3>
+                <p>Custom gateway using SX1301/SX1308 concentrators with Raspberry Pi and STM32F4 backend.</p>
+                <div class="project-tech">
+                    <span>SX1301</span><span>Python</span><span>C</span><span>Linux</span><span>RPi</span>
+                </div>
+            </div>
+            <div class="project-card">
+                <h3>🌡️ ULP Sensor Nodes</h3>
+                <p>Multi-protocol environmental monitoring nodes supporting Sub-1GHz, LoRaWAN, GSM, Wi-Fi, NB-IoT, and BLE.</p>
+                <div class="project-tech">
+                    <span>C</span><span>FreeRTOS</span><span>Multi-Protocol</span><span>Altium</span>
+                </div>
+            </div>
+            <div class="project-card">
+                <h3>🚗 Car & Asset Tracker</h3>
+                <p>GPS/GSM vehicle tracker and BLE/Wi-Fi asset tracker with gateway infrastructure.</p>
+                <div class="project-tech">
+                    <span>GPS</span><span>GSM/LTE</span><span>BLE</span><span>FreeRTOS</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+        <div class="reveal">
+            <div class="section-label">Let's Talk</div>
+            <h2>Get In Touch</h2>
+            <p>Open to embedded systems, IoT, firmware, and hardware engineering roles — IC or leadership. Austin, TX or remote.</p>
+        </div>
+        <div class="contact-links reveal">
+            <a href="mailto:yldzmuhammed@gmail.com">✉ yldzmuhammed@gmail.com</a>
+            <a href="https://github.com/yldzmuhammed">GitHub</a>
+            <a href="https://linkedin.com/in/yldzmuhammed">LinkedIn</a>
+            <a href="tel:+16179061307">📞 (617) 906-1307</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2025 Muhammet Yildiz — Built with bare HTML, CSS & JS</p>
+    </footer>
+
+    <script>
+        // Scroll reveal
+        const reveals = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+        reveals.forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
